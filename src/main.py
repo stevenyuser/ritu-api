@@ -47,3 +47,10 @@ async def sms(From: str = Form(...), Body: str = Form(...)):
     print(msg)
     return Response(content=str(response), media_type="application/xml")
 
+from src.twilio_client import sendMessage
+from src.models.send_sms_model import Send_SMS_Request
+
+@app.post("/send_sms")
+async def send_sms(request: Send_SMS_Request):
+    sendMessage("testing!", request.phone_number) # replace later
+    return {"message": "success"}
