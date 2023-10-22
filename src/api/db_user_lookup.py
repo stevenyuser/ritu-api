@@ -29,4 +29,4 @@ def get_name_by_number(db, number):
     
     user_dict = users[0].to_dict()
 
-    return user_dict["name"]
+    return user_dict["display_name"]
