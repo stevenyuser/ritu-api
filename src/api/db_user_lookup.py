@@ -19,3 +19,14 @@ def get_user_by_number(db, number) -> dict:
     }
 
     return result
+
+def get_name_by_number(db, number):
+    users = db.collection(u'users').where(filter=FieldFilter("phone_number", "==", number)).get()
+
+    if len(users) == 0:
+        print(f"No user accounts with {number}!")
+        return None
+    
+    user_dict = users[0].to_dict()
+
+    return user_dict["name"]
