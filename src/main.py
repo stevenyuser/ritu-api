@@ -20,6 +20,9 @@ async def ping():
 async def paul():
     return {"message": db.collection('users').document('1').get().to_dict()}
 
+
+from src.api.db_user_lookup import get_user_by_number
+
 # sms route - texting to the phone number sends a request to the "/sms" route
 @app.post("/sms")
 async def sms(From: str = Form(...), Body: str = Form(...)):
@@ -30,8 +33,17 @@ async def sms(From: str = Form(...), Body: str = Form(...)):
     # return Response(content=str(response), media_type="application/xml")
 
     response = MessagingResponse()
-    sender = From
+    number = From
     text = Body
-    msg = response.message(f"Hi {sender}, you sent this text: {text}")
+
+    coords_time_dict = get_user_by_number(db, number=number)
+
+    # message = algo(coords_time_dict)
+
+    if coords_time_dict is None:
+        print(f"No user accounts with {number}!")
+
+    msg = response.message(f"Hi {number}, you sent this text: {text}")
     print(msg)
     return Response(content=str(response), media_type="application/xml")
+
