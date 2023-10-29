@@ -61,6 +61,7 @@ async def send_sms(request: Send_SMS_Request):
 
     if coords_time_dict is None:
         print(f"No user accounts with {request.phone_number}!")
+        # TODO: add early return statement here {"message": "failure", ...}
 
     crop_recs = crop_algorithm(coords_time_dict)
     formattedCropMessage = format_message(crop_recs, name)
@@ -77,6 +78,7 @@ async def get_crop_recs(request: Get_Crop_Recs_Request):
 
     if coords_time_dict is None:
         print(f"No user accounts with {request.phone_number}!")
+        # TODO: add early return statement here {"message": "failure", ...}
 
     crop_recs = crop_algorithm(coords_time_dict)
 
