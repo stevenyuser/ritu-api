@@ -69,6 +69,7 @@ async def send_sms(request: Send_SMS_Request):
     return {"message": "success"}
 
 from src.models.get_crop_recs_model import Get_Crop_Recs_Request
+from src.api.crop_algorithm import crop_algorithm
 
 # sends crop recs to ios
 @app.post("/get_crop_recs")
@@ -78,6 +79,6 @@ async def get_crop_recs(request: Get_Crop_Recs_Request):
     if coords_time_dict is None:
         print(f"No user accounts with {request.phone_number}!")
 
-    # crop_recs = algo(coords_time_dict)
+    crop_recs = crop_algorithm(coords_time_dict)
 
     return {"message": "success", "crop_recs": crop_recs.serialize()}
