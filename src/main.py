@@ -69,7 +69,6 @@ async def send_sms(request: Send_SMS_Request):
     return {"message": "success"}
 
 from src.models.get_crop_recs_model import Get_Crop_Recs_Request
-from src.api.crop_algorithm import crop_algorithm
 
 # sends crop recs to ios
 @app.post("/get_crop_recs")
