@@ -1,4 +1,4 @@
-# Ritu iOS App
+# Ritu API
 
 ## Description
 FastAPI-based API backend for Ritu, a mobile app & SMS system that generates 7-day pest & weather projections, enabling farmers to minimize disease spread & crop loss. Hosted on DigitalOcean.
