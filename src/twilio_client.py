@@ -3,7 +3,7 @@ from twilio.rest import Client
 import os
 
 PHONE_NUMBER = "+18555345790"
-# APP_SID= "APc62df12923f706674be1859f51f2052e"
+# APP_SID= os.environ["TWILIO_APP_SID"]
 
 TOKEN = os.environ["TWILIO_TOKEN"]
 SID = os.environ["TWILIO_SID"]
