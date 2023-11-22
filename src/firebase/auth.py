@@ -3,7 +3,7 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
 
-SECRETS_PATH = 'secrets/db.json'
+SECRETS_PATH = 'service_account.json'
 
 class Firebase:
     def __init__(self):
